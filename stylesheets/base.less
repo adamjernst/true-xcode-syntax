@@ -1,0 +1,96 @@
+@import "syntax-variables";
+
+.editor-colors {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+}
+
+.editor {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
+
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
+
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
+
+  .gutter {
+    background-color: @syntax-gutter-background-color;
+    color: @syntax-gutter-text-color;
+    border-right: 1px solid #E7E7E7;
+  }
+
+  .cursor {
+    color: @syntax-cursor-color;
+  }
+
+  .highlights {
+    .selection .region {
+      background-color: @syntax-selection-color;
+    }
+    .find-result .region {
+      background-color: @syntax-result-marker-color;
+    }
+    .current-result .region {
+      background-color: @syntax-result-marker-color-selected;
+    }
+    /** Default inline error is super heavy. Copy Xcode's dotted underline style. */
+    .highlight.linter-error .region {
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px dotted red;
+    }
+    .highlight.linter-warning .region {
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px dotted @text-color-warning;
+    }
+  }
+
+  .source {
+    .comment {
+      color: @comment;
+    }
+
+    .preprocessor {
+      color: @preprocessor !important; // Override keyword colors etc.
+      .include.string {
+        color: @string !important;
+      }
+    }
+
+    /** NSArray, NSDictionary, etc. */
+    .support.class {
+      color: @other-class-names;
+    }
+
+    /** e.g. @implementation, @interface, @class */
+    .storage.type {
+      color: @keyword;
+    }
+
+    .meta.implementation, .meta.interface-or-protocol {
+      /** return, @property, etc */
+      .keyword {
+        color: @keyword;
+      }
+      /** YES, etc */
+      .language.constant {
+        color: @keyword;
+      }
+      /** quoted strings */
+      .quoted.string {
+        color: @string;
+      }
+    }
+  }
+}
