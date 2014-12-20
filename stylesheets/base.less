@@ -59,10 +59,13 @@
   .source {
     .comment {
       color: @comment;
+      .keyword, .storage.modifier, .storage.type {
+        color: inherit !important;
+      }
     }
 
     .preprocessor {
-      color: @preprocessor; // Override keyword colors etc.
+      color: @preprocessor;
       .include.string {
         color: @string;
       }
@@ -102,19 +105,15 @@
       }
       /* dot property access */
       .variable.dot-access {
-        color: @project-functions;
+        color: @functions;
       }
       /* method calls; despite the "support", this applies to both local and framework methods */
       .support.function {
-        color: @project-functions;
-      }
-      /* e.g. alloc TODO merge with .support.function, in reality they're the same */
-      .support.function.any-method {
-        color: @other-functions;
+        color: @functions;
       }
       /* the inherited superclass in @interface declarations */
       .inherited-class {
-        color: @project-functions;
+        color: @functions;
       }
       /* self, super in method calls */
       .variable.objc {
@@ -125,7 +124,7 @@
        also color the class type in parameters
       */
       .return-type, .argument-type {
-        color: @project-functions;
+        color: @functions;
         /**
          but do not color the punctuation (parens) or method name (which is curiously part of the "return type")
          or the parameter name e.g. foo in "someArg:(NSString *)foo"
@@ -136,7 +135,7 @@
       }
       /* foo in id<foo> */
       .protocol-list {
-        color: @project-functions;
+        color: @functions;
       }
     }
   }
