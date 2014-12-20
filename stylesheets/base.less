@@ -69,7 +69,7 @@
       .include.string {
         color: @string;
       }
-      /** Override the keyword coloring in preprocessor stuff */
+      /* Override the keyword coloring in preprocessor stuff */
       .keyword {
         color: inherit !important;
       }
@@ -85,7 +85,12 @@
       color: @keyword;
     }
 
-    /** e.g. const */
+    /* but don't highlight the parens in @selector() */
+    .storage.type.punctuation {
+      color: inherit !important;
+    }
+
+    /* e.g. const */
     .storage.modifier {
       color: @keyword;
     }
@@ -119,13 +124,13 @@
       .variable.objc {
         color: @keyword;
       }
-      /**
+      /*
        do color the return type of methods, e.g. foo in - (foo *)someMethod. unfortunately this includes the *
        also color the class type in parameters
       */
       .return-type, .argument-type {
         color: @functions;
-        /**
+        /*
          but do not color the punctuation (parens) or method name (which is curiously part of the "return type")
          or the parameter name e.g. foo in "someArg:(NSString *)foo"
          */
