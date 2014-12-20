@@ -41,7 +41,7 @@
     .current-result .region {
       background-color: @syntax-result-marker-color-selected;
     }
-    /** Default inline error is super heavy. Copy Xcode's dotted underline style. */
+    /* Default inline error is super heavy. Copy Xcode's dotted underline style. */
     .highlight.linter-error .region {
       background: none;
       border-left: none;
@@ -62,34 +62,81 @@
     }
 
     .preprocessor {
-      color: @preprocessor !important; // Override keyword colors etc.
+      color: @preprocessor; // Override keyword colors etc.
       .include.string {
-        color: @string !important;
+        color: @string;
+      }
+      /** Override the keyword coloring in preprocessor stuff */
+      .keyword {
+        color: inherit !important;
       }
     }
 
-    /** NSArray, NSDictionary, etc. */
+    /* NSArray, NSDictionary, etc. */
     .support.class {
       color: @other-class-names;
     }
 
-    /** e.g. @implementation, @interface, @class */
+    /* e.g. @implementation, @interface, @class; id in declarations */
     .storage.type {
       color: @keyword;
     }
 
+    /** e.g. const */
+    .storage.modifier {
+      color: @keyword;
+    }
+
     .meta.implementation, .meta.interface-or-protocol {
-      /** return, @property, etc */
+      /* return, @property, etc */
       .keyword {
         color: @keyword;
       }
-      /** YES, etc */
+      /* YES, etc */
       .language.constant {
         color: @keyword;
       }
-      /** quoted strings */
+      /* quoted strings */
       .quoted.string {
         color: @string;
+      }
+      /* dot property access */
+      .variable.dot-access {
+        color: @project-functions;
+      }
+      /* method calls; despite the "support", this applies to both local and framework methods */
+      .support.function {
+        color: @project-functions;
+      }
+      /* e.g. alloc TODO merge with .support.function, in reality they're the same */
+      .support.function.any-method {
+        color: @other-functions;
+      }
+      /* the inherited superclass in @interface declarations */
+      .inherited-class {
+        color: @project-functions;
+      }
+      /* self, super in method calls */
+      .variable.objc {
+        color: @keyword;
+      }
+      /**
+       do color the return type of methods, e.g. foo in - (foo *)someMethod. unfortunately this includes the *
+       also color the class type in parameters
+      */
+      .return-type, .argument-type {
+        color: @project-functions;
+        /**
+         but do not color the punctuation (parens) or method name (which is curiously part of the "return type")
+         or the parameter name e.g. foo in "someArg:(NSString *)foo"
+         */
+        .punctuation, .entity.name, .variable {
+          color: @syntax-text-color;
+        }
+      }
+      /* foo in id<foo> */
+      .protocol-list {
+        color: @project-functions;
       }
     }
   }
