@@ -1,7 +1,7 @@
 {
   "name": "true-xcode-syntax",
   "theme": "syntax",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An attempt to match Xcode's default color scheme as closely as possible",
   "repository": "https://github.com/adamjernst/true-xcode-syntax",
   "license": "MIT",
